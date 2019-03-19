@@ -1,18 +1,10 @@
 ﻿#include "Classification.h"
-#include <atomic>
-
 using namespace ObjectsTest;
-
-namespace
-{
-    std::atomic<unsigned int> lastClassIndex;
-}
 
 Classification::Classification( const char* className,
     const Classification* baseClass,
     Object* ( *pCreateFunc )( ) )
     : myBase( baseClass )
-    , index( ++lastClassIndex )
     , createFunc( pCreateFunc )
 {
     GetClasses().insert( std::make_pair( className, this ) );
@@ -51,11 +43,6 @@ bool Classification::IsDerivedFrom( const Classification* base ) const
         return true;
 
     return myBase->IsDerivedFrom( base );
-}
-
-bool Classification::operator==( const Classification& other ) const
-{
-    return index == other.index;
 }
 
 Classification::Classes& Classification::GetClasses()

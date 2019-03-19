@@ -19,7 +19,6 @@ namespace ObjectsTest
 
 
         bool IsDerivedFrom( const Classification* base ) const;
-        bool operator==( const Classification& other ) const;
 
     private:
         using Classes = std::unordered_map<std::string, const Classification*>;
@@ -27,7 +26,6 @@ namespace ObjectsTest
         static Classes& GetClasses();
 
         const Classification* myBase;
-        unsigned int          index;
         Object* ( *createFunc )( );
     };
 

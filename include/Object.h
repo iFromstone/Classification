@@ -18,12 +18,13 @@ namespace ObjectsTest
 
         template<class T> bool IsA() const;
 
-        static const Classification classObject;
         virtual Classification*     GetClass() const;
         static  Classification*     GetClassStatic();
 
     protected:
         Object();
+
+        static const Classification classObject;
     };
 
     template<typename T> bool Object::IsA() const
